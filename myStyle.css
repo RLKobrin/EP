@@ -120,6 +120,11 @@ a.button{
 a.button:hover{
     background-color:rgba(255, 255, 255, 0.85);
 }
+a.homepagelink{
+    color:white;
+    text-decoration: none;
+    cursor: auto;
+}
 div.heading{
     width:100%;
     background-color:black;
