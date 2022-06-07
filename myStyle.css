@@ -124,6 +124,9 @@ a.homepagelink{
     color:white;
     text-decoration: none;
 }
+a.homepagelink:hover{
+    cursor: pointer;
+}
 div.heading{
     width:100%;
     background-color:black;
