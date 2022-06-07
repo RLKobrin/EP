@@ -4,7 +4,7 @@
     <meta charset = "utf-8">
     <title>Homepage</title>
     <link rel = "stylesheet" href = "myStyle.css">
-    <script src = "myScript.js" defer></script>
+    <script src = "cadScript.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
   
@@ -20,7 +20,32 @@
 	<div class="l4"><a href="Research.html" class="button">Research</a></div>
 	</div>
 </div>
-  
+	
+<div id="cadbuttons">
+    <input type="radio" name="cadinfo" id="skystone" value="skystone" onclick="showtext(0)" checked>
+    <label for="tank">Skystone</label>
+    <input type="radio" name="cadinfo" id="bme298" value="bme298" onclick="showtext(1)">
+    <label for="mecanum">BME Cad Showcase</label>
+    <input type="radio" name="cadinfo" id="ftccad" value="ftccad" onclick="showtext(2)">
+    <label for="h-drive">FTC Cadathon</label>
+    <input type="radio" name="cadinfo" id="frccad" value="frccad" onclick="showtext(3)">
+    <label for="x-drive">FRC Cadathon</label>
+</div>
+	
+<div id="skystonewords">
+	<p> Skystone
+</div>
+<div id="bme298words">
+	<p> BME298
+</div>
+<div id="ftcwords">
+	<p> FTC
+</div>
+<div id="frcwords">
+	<p> FRC
+</div>
+	
+	
 <footer class="flexible">
     <div class="content">Author's Name: Robert Kobrin</div>
 	<div class="content">Last Edited: June 7 2022</div>
