@@ -411,6 +411,10 @@ img#tamech{
     float:right;
     margin-right:1em;
 }
+img#headshot{
+    float:left;
+    width:20%;
+}
 @media (max-width:600px) {
     div.imgtext{
         font-size:1.25em;
