@@ -87,60 +87,7 @@ div.headingtext{
     font-size:2em;
     text-align:center;
 }
-a.RKR{
-    text-decoration:none;
-    color:white;
-}
 div.linkbuttons{
-    text-align:center;
-}
-div.skystoneImgs{
-    display: inline-block;
-}
-div.l1{
-    display:inline-block;
-    margin-top:2em;
-    margin-bottom:2em;
-}
-div.l2{
-    display:inline-block;
-    margin-bottom:2em;
-}
-div.l3{
-    display:inline-block;
-    margin-bottom:2em;
-}
-div.l4{
-    display:inline-block;
-    margin-bottom:2em;
-}
-div.l5{
-    display:inline-block;
-    margin-bottom:2em;
-}
-div.l6{
-    display:inline-block;
-    margin-bottom:2em;
-}
-p.yangfull{
-    text-align:center;
-    border-style:solid;
-    border-color:black;
-}
-img.YangFull{
-    border-style:solid;
-    border-color:black;
-}
-div.y1{
-    text-align:center;
-}
-div.y2{
-    text-align:center;
-}
-div.y3{
-    text-align:center;
-}
-div.y4{
     text-align:center;
 }
 div.trophy{
@@ -158,15 +105,15 @@ p.tr{
 }
 img#skystonefull{
     width:25%;
-    border-style:solid;
+    border:1px solid black;
 }
 img#skystoneintake{
     width:25%;
-    border-style:solid;
+    border:1px solid black;
 }
 img#skystonedt{
     width:25%;
-    border-style:solid;
+    border:1px solid black;
 }
 div.a1{
     display:inline-block;
