@@ -261,9 +261,9 @@ div#cadbuttons label{
     font-size:2em;
     font-family:Cambria,Georgia,"Book Antiqua",serif;
 }
-
-
-
+div#cadbuttons input:checked+label{
+    background-color:darkgray;
+}
 
 
 div#intakebuttons{
