@@ -156,22 +156,17 @@ p.tr{
     margin-top:0;
     margin-bottom:0;
 }
-img#practicefield{
-    width:20%;
+img#skystonefull{
+    width:25%;
     border-style:solid;
-    margin-left:1em;
-    margin-right:1em;
-    filter: grayscale(100%);
 }
-img#statefinal{
-    width:50%;
+img#skystoneintake{
+    width:25%;
     border-style:solid;
-    margin-left:1em;
-    margin-right:1em;
-    filter: grayscale(100%);
 }
-div.worldspics{
-    text-align:center;
+img#skystonedt{
+    width:25%;
+    border-style:solid;
 }
 div.a1{
     display:inline-block;
