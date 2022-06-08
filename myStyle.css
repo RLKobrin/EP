@@ -146,6 +146,9 @@ a.RKR{
 div.linkbuttons{
     text-align:center;
 }
+div.skystoneImgs{
+    display: inline-block;
+}
 div.l1{
     display:inline-block;
     margin-top:2em;
