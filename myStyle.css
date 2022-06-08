@@ -244,24 +244,6 @@ div.a4{
     margin-right:1em;
 }
 
-div#cadbuttons input{
-    display:none;
-}
-div#cadbuttons label{
-    width:15%;
-    border:1px solid black;
-    text-align:center;
-    color:black;
-    font-weight:800;
-    font-size:2em;
-    font-family:Cambria,Georgia,"Book Antiqua",serif;
-}
-div#cadbuttons input:checked+label{
-    background-color:darkgray;
-}
-div#cadbuttons{
-    text-align:center;
-}
 div#intakebuttons{
     text-align:center;
 }
