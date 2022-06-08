@@ -96,6 +96,10 @@ p.tr{
     margin-top:0;
     margin-bottom:0;
 }
+/* Skystone CAD */
+div.skystoneImgs{
+    display: inline-block;
+}
 img#skystonefull{
     width:25%;
     border:1px solid black;
@@ -107,6 +111,9 @@ img#skystoneintake{
 img#skystonedt{
     width:25%;
     border:1px solid black;
+}
+div.showcaseImgs{
+    display: inline-block;
 }
 img#showcasepump1{
     width:25%;
