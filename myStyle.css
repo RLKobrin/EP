@@ -245,7 +245,9 @@ div.a4{
 }
 
 
-
+div#cadbuttons{
+    text-align:center;
+}
 div#cadbuttons input{
     display:none;
 }
