@@ -90,6 +90,22 @@ div.headingtext{
 div.linkbuttons{
     text-align:center;
 }
+div.l1{
+    display:inline-block;
+    margin-top:2em;
+    margin-bottom:2em;
+}
+div.l2{
+    display:inline-block;
+    margin-bottom:2em;
+}
+div.l3{
+    display:inline-block;
+    margin-bottom:2em;
+}
+div.l4{
+    display:inline-block;
+    margin-bottom:2em;
 p.tr{
     padding-top:0.2em;
     padding-bottom:0.2em;
