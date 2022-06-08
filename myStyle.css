@@ -160,6 +160,7 @@ div#cadbuttons label{
     text-align:center;
     font-size:2em;
     font-family:Cambria,Georgia,"Book Antiqua",serif;
+    margin-top:2px;
 }
 div#cadbuttons input:checked+label{
     background-color:darkgray;
