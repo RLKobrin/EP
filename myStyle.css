@@ -3,18 +3,6 @@ body{
     margin:0;
     padding:0;
 }
-img#Quark1{
-    float:left;
-    margin:0;
-    padding:0;
-   
-}
-img#Quark2{
-    float:right;
-    margin:0;
-    padding:0;
-  
-}
 h1{
     position: absolute;
     top:10%;
@@ -60,48 +48,8 @@ footer.content{
     padding-right:0.25em;
     padding-top:0.25em;
     padding-bottom:0.25em;
- 
 }
-div.hbutton{
-    text-align:center;
-    background-color:black;
-    width:20%;
-    margin:0 auto;
-}
-div.drivetraindiv{
-    float:left;
-}
-div.intakediv{
-    float:left;
-}
-div.lineardiv{
-    float:right;
-}
-div.scoringdiv{
-    float:right;
-}
-div.imgcontainer{
-    position: relative;
-    text-align:center;
-    color: white;
-}
-div.imgtext {
-    position: absolute;
-    top: 5%;
-    width:50%;
-    margin-left:25%;
-    color:black;
-    font-size:2em;
-    font-family:"Lucida Console", Monaco, monospace;
-    text-align:center;
-    
-  }
-div.imgbutton{
-    position:absolute;
-    top:50%;
-    width:50%;
-    margin-left:25%;
-}
+
 a.button{
     font: bold 1em Arial;
     text-decoration: none;
