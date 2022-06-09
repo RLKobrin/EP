@@ -145,26 +145,6 @@ img#showcasepump2{
 }
 
 
-div#cadbuttons{
-    text-align:center;
-}
-div#cadbuttons input{
-    display:none;
-}
-div#cadbuttons:hover{
-    cursor:pointer;
-}
-div#cadbuttons label{
-    width:15%;
-    border:1px solid black;
-    text-align:center;
-    font-size:2em;
-    font-family:Cambria,Georgia,"Book Antiqua",serif;
-}
-div#cadbuttons input:checked+label{
-    background-color:darkgray;
-}
-
 
 
 img#headshot{
