@@ -186,7 +186,7 @@ div#researchbuttons input:checked+label{
 }
 
 div#immunoengineeringwords{
-    display: inline-block;
+    justify-content: center;
 }
 
 img#headshot{
