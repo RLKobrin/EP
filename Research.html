@@ -4,7 +4,7 @@
     <meta charset = "utf-8">
     <title>Homepage</title>
     <link rel = "stylesheet" href = "myStyle.css">
-    <script src = "myScript.js" defer></script>
+    <script src = "researchScript.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
   
@@ -20,9 +20,26 @@
 	<div class="l4"><a href="Research.html" class="button">Research</a></div>
 	</div>
 </div>
-  
+
+<!-- Radio Buttons to swap between ImmunoEngineering lab research at NC State and Biosensors group research at ICN2 -->
+<div id="researchbuttons">
+    <input type="radio" name="researchinfo" id="immunoengineering" value="immunoengineering" onclick="showtext(0)" checked>
+    <label for="immunoengineering">ImmunoEngineering</label>
+    <input type="radio name="researchinfo" id="icn2" value="icn2" onclick="showtext(1)">
+    <label for="icn2">ICN2</label>
+</div>
+
+<!-- Displayed content for ImmunoEngineering Lab -->		     
+<div id="immunoengineeringwords">
 <iframe src="https://icn-my.sharepoint.com/personal/rkobrin_icn2_net/_layouts/15/Doc.aspx?sourcedoc={f169df38-5855-4847-a86f-e2edd0fe8ef9}&amp;action=embedview&amp;wdAr=1.3333333333333333" width="700px" height="500px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>	
-	
+</div>
+
+<!-- Displayed content for ICN2 -->
+<div id = "icn2words">
+	<p> ICN2 Test </p>		     
+</div>
+		     
+		     
 <footer class="flexible">
     <div class="content">Author's Name: Robert Kobrin</div>
 	<div class="content">Last Edited: June 7 2022</div>
