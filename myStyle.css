@@ -185,6 +185,10 @@ div#researchbuttons input:checked+label{
     background-color:darkgray;
 }
 
+div#immunoengineeringwords{
+    text-align: center;
+}
+
 img#headshot{
     float:left;
     width:20%;
