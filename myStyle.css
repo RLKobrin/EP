@@ -165,7 +165,25 @@ div#cadbuttons input:checked+label{
     background-color:darkgray;
 }
 
-
+div#researchbuttons{
+    text-align:center;
+}
+div#researchbuttons input{
+    display:none;
+}
+div#researchbuttons:hover{
+    cursor:pointer;
+}
+div#researchbuttons label{
+    width:15%;
+    border:1px solid black;
+    text-align:center;
+    font-size:2em;
+    font-family:Cambria,Georgia,"Book Antiqua",serif;
+}
+div#researchbuttons input:checked+label{
+    background-color:darkgray;
+}
 
 img#headshot{
     float:left;
