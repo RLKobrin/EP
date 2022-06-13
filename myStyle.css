@@ -188,6 +188,9 @@ div#researchbuttons input:checked+label{
 div#immunoengineeringwords{
     justify-content: center;
 }
+img#IEPoster{
+    width:60%;
+}
 
 img#headshot{
     float:left;
