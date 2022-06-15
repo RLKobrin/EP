@@ -132,6 +132,7 @@ title(<span class="string">'X Distance Traveled Based On Release Velocity Magnit
 xlabel(<span class="string">'Release Velocity Magnitude (m/s)'</span>)
 ylabel(<span class="string">'X Distance Traveled (m)'</span>)
 legend(<span class="string">'X Distance Traveled'</span>,<span class="string">'Witch King Distance'</span>,<span class="string">'Location'</span>,<span class="string">'northwest'</span>)
+snapnow
 figure
 
 <span class="comment">%Part 2 Plot</span>
@@ -141,6 +142,7 @@ xlabel(<span class="string">'Initial Angle (degrees)'</span>)
 ylabel(<span class="string">'X Distance Traveled (m)'</span>)
 legend(<span class="string">'X Distance Traveled'</span>,<span class="string">'Witch King Distance'</span>,<span class="string">'Location'</span>,<span class="string">'south'</span>)
 xlim([iAngleSet(1) iAngleSet(end)])
+snapnow
 figure
 
 <span class="comment">%Part 3 Plot</span>
@@ -152,15 +154,16 @@ legend(<span class="string">'Launch at 45 degrees, Velocity Intersect'</span>,<s
 xlim([adjIX targetDistance])
 hold <span class="string">on</span>
 showImage = imagesc(<span class="string">'XData'</span>,targetDistance-targetDistance*0.1,<span class="string">'YData'</span>,finalHit,<span class="string">'CData'</span>,imgResize);
+snapnow
 
 <span class="comment">%Output statements</span>
 fprintf(<span class="string">'At %2.2f%c, the velocity needed to hit the Witch-King is %0.2f m/s \n'</span>,iAngle,char(176),xDTIAvg)
 fprintf(<span class="string">'At %2.2f m/s, the first launch angle needed to hit the Witch-King is %0.2f%c \n'</span>,iVelSet,xDTA(1),char(176))
 fprintf(<span class="string">'At %2.2f m/s, the second launch angle needed to hit the Witch-King is %0.2f%c \n'</span>,iVelSet,xDTA(end),char(176))
-</pre><pre class="codeoutput">At 45.00&deg;, the velocity needed to hit the Witch-King is 52.23 m/s 
+</pre><img vspace="5" hspace="5" src="PA2_01.png" alt=""> <img vspace="5" hspace="5" src="PA2_02.png" alt=""> <img vspace="5" hspace="5" src="PA2_03.png" alt=""> <pre class="codeoutput">At 45.00&deg;, the velocity needed to hit the Witch-King is 52.23 m/s 
 At 65.00 m/s, the first launch angle needed to hit the Witch-King is 0.02&deg; 
 At 65.00 m/s, the second launch angle needed to hit the Witch-King is 64.51&deg; 
-</pre><img vspace="5" hspace="5" src="PA2_01.png" alt=""> <img vspace="5" hspace="5" src="PA2_02.png" alt=""> <img vspace="5" hspace="5" src="PA2_03.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020b</a><br></p></div><!--
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
 %% Programming Assignment: Trajectory Calculations
 % Robert Kobrin
@@ -239,6 +242,7 @@ title('X Distance Traveled Based On Release Velocity Magnitude')
 xlabel('Release Velocity Magnitude (m/s)')
 ylabel('X Distance Traveled (m)')
 legend('X Distance Traveled','Witch King Distance','Location','northwest')
+snapnow
 figure
 
 %Part 2 Plot
@@ -248,6 +252,7 @@ xlabel('Initial Angle (degrees)')
 ylabel('X Distance Traveled (m)')
 legend('X Distance Traveled','Witch King Distance','Location','south')
 xlim([iAngleSet(1) iAngleSet(end)])
+snapnow
 figure
 
 %Part 3 Plot
@@ -259,6 +264,7 @@ legend('Launch at 45 degrees, Velocity Intersect','Launch at 65 m/s, Angle Inter
 xlim([adjIX targetDistance])
 hold on
 showImage = imagesc('XData',targetDistance-targetDistance*0.1,'YData',finalHit,'CData',imgResize);
+snapnow
 
 %Output statements
 fprintf('At %2.2f%c, the velocity needed to hit the Witch-King is %0.2f m/s \n',iAngle,char(176),xDTIAvg)
