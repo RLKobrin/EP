@@ -1,0 +1,499 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>bicycleProject</title><meta name="generator" content="MATLAB 9.9"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-06-20"><meta name="DC.source" content="bicycleProject.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Bicycle Motion Analysis</a></li><li><a href="#2">Declarations</a></li><li><a href="#3">Calculations</a></li><li><a href="#5">Animated Rotation Plot</a></li><li><a href="#7">Outputs</a></li></ul></div><h2 id="1">Bicycle Motion Analysis</h2><p>Robert Kobrin, Audrey Biller, Macie Benge, Robert Samaskeawicz <a href="mailto:rlkobrin@ncsu.edu">rlkobrin@ncsu.edu</a> 2/23/2022 BikeProjectTest.m</p><pre class="codeinput">clear
+clc
+close <span class="string">all</span>
+</pre><h2 id="2">Declarations</h2><p>Define four bar lengths (meters)</p><pre class="codeinput">r1 = .76; <span class="comment">% Frame length (m)</span>
+r2 = 0.1; <span class="comment">% Pedal length (m)</span>
+r3 = 0.4572; <span class="comment">% Lower leg length of Robert S (m)</span>
+r4 = 0.4826; <span class="comment">% Thigh length of Robert S (m)</span>
+
+<span class="comment">% Define input bar's initial angle, omega, and alpha</span>
+th1init = (73)*(pi/180); <span class="comment">%Initial theta 1 angle (degrees)</span>
+th2init = pi; <span class="comment">%Initial theta 2 angle (radians)</span>
+thfinal = 3*pi; <span class="comment">%Final theta 2 angle (radians)</span>
+om2init = 1; <span class="comment">%Initial omega (rad/s)</span>
+al2 = 0; <span class="comment">%Initial alpha (rad/s^2)</span>
+
+<span class="comment">% Variables</span>
+mass = 100; <span class="comment">%Mass of human (kg)</span>
+g = -9.8; <span class="comment">%gravity m/s^2</span>
+Tdown = 125; <span class="comment">%Torque when pushing down (N*m)</span>
+Tup = 0; <span class="comment">%Torque when pushing up (N*m)</span>
+
+<span class="comment">% Mass of components</span>
+m1 = 1.25; <span class="comment">%Frame, value found online</span>
+m2 = 0.3; <span class="comment">%Pedal, value found online</span>
+m3 = mass*0.0465; <span class="comment">%Lower Leg</span>
+m4 = mass*0.1; <span class="comment">%Thigh</span>
+
+<span class="comment">% Force of gravity</span>
+Fg2y = g*m2;
+Fg3y = g*m3;
+Fg4y = g*m4;
+
+<span class="comment">% Moments of inertia</span>
+I1 = 1/12 * m1 * r1^2; <span class="comment">%MoI for link 1 (Frame)</span>
+I2 = 1/12 * m2 * r2^2; <span class="comment">%MoI for link 2 (Pedal)</span>
+I3 = m3*(r3*0.302)^2; <span class="comment">%MoI for link 3(Lower Leg)</span>
+I4 = m4*(r4*0.323)^2; <span class="comment">%MoI for link 4 (Thigh)</span>
+
+<span class="comment">% Guess for fsolve</span>
+guess = [pi (3*pi)/2 0 0 0 0];
+
+<span class="comment">% Angle Array</span>
+angArray = th2init:(pi/180):thfinal;
+om2 = [];
+
+<span class="comment">% Plot</span>
+vidObj.FrameRate = 10;
+
+<span class="comment">% Anthropometric Table Values</span>
+legDist = 0.567;
+legProx = 0.433;
+thighDist = 0.567;
+thighProx = 0.433;
+</pre><h2 id="3">Calculations</h2><pre class="codeinput">options = optimoptions(<span class="string">'fsolve'</span>,<span class="string">'Display'</span>,<span class="string">'off'</span>,<span class="string">'MaxIter'</span>,10000,<span class="keyword">...</span>
+    <span class="string">'MaxFunEvals'</span>,50000,<span class="string">'TolFun'</span>,1e-10);
+
+vidObj = VideoWriter(<span class="string">'Cycling.avi'</span>);
+open(vidObj)
+
+<span class="keyword">for</span> k = 1:length(angArray)
+</pre><pre class="codeinput">    th2 = angArray(k);
+
+    om2(k) = sqrt(om2init^2 + 2*al2*(th2-th2init));
+    answers = fsolve(@fourbar_proj,guess,options,r1,r2,r3,r4,th1init,th2,om2(k),al2);
+    guess = answers;
+    th3(k) = answers(1);
+    th4(k) = answers(2);
+    om3(k) = answers(3);
+    om4(k) = answers(4);
+    al3(k) = answers(5);
+    al4(k) = answers(6);
+
+        <span class="comment">%r vectors</span>
+    r12x(k) = (-r2/2)*cos(th2);
+    r12y(k) = (-r2/2)*sin(th2);
+    r32x(k) = (r2/2)*cos(th2);
+    r32y(k) = (r2/2)*sin(th2);
+    r23x = (-r3*legDist)*cos(th3);
+    r23y = (-r3*legDist)*sin(th3);
+    r43x = (r3*legProx)*cos(th3);
+    r43y = (r3*legProx)*sin(th3);
+    r34x = (-r4*thighDist)*cos(th4);
+    r34y = (-r4*thighDist)*sin(th4);
+    r14x = (r4*thighProx)*cos(th4);
+    r14y = (r4*thighProx)*sin(th4);
+
+    <span class="comment">% Solving for linear accelerations</span>
+    acm2x = -al2.*(r2/2).*sin(th2) - om2.^2 .* (r2/2).*cos(th2);
+    acm2y = al2.*(r2/2).*cos(th2) - om2.^2 .* (r2/2).*sin(th2);
+    acm3x = -al2.*r2.*sin(th2) - om2.^2 .*r2.*cos(th2) -al3.*(r3*legDist).*sin(th3) - om3.^2 .* (r3*legDist).*cos(th3);
+    acm3y = al2.*r2.*cos(th2) - om2.^2 .* r2.*sin(th2) + al3.*(r3*legDist).*cos(th3) - om3.^2 .*(r3*legDist).*sin(th3);
+    acm4x = -al2.*r2.*sin(th2) - om2.^2 *r2.*cos(th2) -al3.*r3.*sin(th3) - om3.^2 .*r3.*cos(th3) - al4.*(r4*thighDist).*sin(th4) - om4.^2 .* (r4*thighDist).*cos(th4);
+    acm4y = al2.*r2.*cos(th2) - om2.^2 .* r2.*sin(th2) + al3.*r3.*cos(th3) - om3.^2 .* r3.*sin(th3) + al4.*(r4*thighDist).*cos(th4) - om4.^2 .* (r4*thighDist).*sin(th4);
+
+    <span class="keyword">if</span> (th2 &gt;=(3*pi)/2) &amp;&amp; (th2 &lt;= (5*pi)/2)
+        Tdown = 0;
+    <span class="keyword">else</span>
+        Tdown = 125;
+    <span class="keyword">end</span>
+
+    Tpedal(k) = Tdown;
+
+    <span class="comment">% F12x  F12y    F32x       F32y    F23x    F23y    F43x     F43y    F34x    F34y    F14x     F14y    T4</span>
+A = [1       0       1          0       0       0       0        0       0       0       0        0      0;
+     0       1       0          1       0       0       0        0       0       0       0        0      0;
+   -r12y(k) r32x(k)  -r32y(k) r12x(k)   0       0       0        0       0       0       0        0      1;
+     0       0       0          0       1       0       1        0       0       0       0        0      0;
+     0       0       0          0       0       1       0        1       0       0       0        0      0;
+     0       0       0          0    -r23y(k)  r23x(k) -r43y(k) r43x(k)  0       0       0        0      0;
+     0       0       0          0       0       0       0        0       1       0       1        0      0;
+     0       0       0          0       0       0       0        0       0       1       0        1      0;
+     0       0       0          0       0       0       0        0     -r34y(k) r34x(k) -r14y(k) r14x(k) 0;
+     0       0       1          0       1       0       0        0       0       0       0        0      0;
+     0       0       0          1       0       1       0        0       0       0       0        0      0;
+     0       0       0          0       0       0       1        0       1       0       0        0      0;
+     0       0       0          0       0       0       0        1       0       1       0        0      0];
+b = [(m2*acm2x(k)) (m2*acm2y(k) - m2*g) (I2*al2) (m3*acm3x(k)) (m3*acm3y(k) -m3*g) (I3*al3(k)) (m4*acm4x(k)) (m4*acm4y(k)-m4*g) (I4*al4(k)-Tdown) 0 0 0 0]';
+
+F = A\b;
+
+YForce(k) = F(10);
+XForce(k) = F(9);
+<span class="comment">%Fpar = XForce(k).*cos(th4) + YForce(k).*sin(th4); %force parallel to thigh</span>
+<span class="comment">%Fperp = YForce(k).*cos(th4) - XForce(k).*sin(th4); %force perpendicular to thigh</span>
+Fpar = YForce.*sin(90-th4);
+Fperp = XForce.*cos(th4);
+THip(k) = F(13);
+
+<span class="comment">% Joint locations</span>
+j1x(k) = r1*cos(th1init); <span class="comment">%X position of joint 1 coordinate</span>
+j1y(k) = r1*sin(th1init); <span class="comment">%Y position of joint 1 coordinate</span>
+j2x(k) = 0; <span class="comment">%X position of joint 2 coordinate</span>
+j2y(k) = 0; <span class="comment">%Y position of joint 2 coordinate</span>
+j3x(k) = r32x(k)-r12x(k);
+j3y(k) = r32y(k) - r12y(k);
+j4x(k) = j3x(k) + r3*cos(th3(k));
+j4y(k) = j3y(k) + r3*sin(th3(k));
+
+lengthR2(k) = sqrt((j2x(k)-j3x(k))^2 + (j2y(k)-j3y(k))^2);
+lengthR3(k) = sqrt((j4x(k)-j3x(k))^2 + (j4y(k)-j3y(k))^2);
+lengthR4(k) = sqrt((j4x(k)-j1x(k))^2 + (j4y(k)-j1y(k))^2);
+</pre><h2 id="5">Animated Rotation Plot</h2><pre class="codeinput"><span class="comment">%figure(1)</span>
+<span class="comment">%currentFrame=getframe(gcf);</span>
+<span class="comment">%writeVideo(vidObj,currentFrame);</span>
+<span class="comment">% plot([j1x(k) j2x(k)], [j1y(k) j2y(k)], 'r',...</span>
+<span class="comment">%     [j2x(k) j3x(k)], [j2y(k) j3y(k)], 'b',...</span>
+<span class="comment">%     [j3x(k) j4x(k)], [j3y(k) j4y(k)], 'g',...</span>
+<span class="comment">%     [j4x(k) j1x(k)], [j4y(k) j1y(k)], 'k',...</span>
+<span class="comment">%      j4x, j4y, 'm-' ,...</span>
+<span class="comment">%     j1x(k), j1y(k), 'ro', j2x(k), j2y(k), 'bo', ...</span>
+<span class="comment">%     j3x(k), j3y(k), 'go', j4x(k), j4y(k), 'ko', 'LineWidth', 2)</span>
+<span class="comment">% legend('Frame', 'Pedal', 'Leg', 'Thigh','Knee','Location','southeast')</span>
+<span class="comment">% xlim([-.5 .5])</span>
+<span class="comment">% ylim([-.2 .8])</span>
+<span class="comment">% xlabel('Horizontal Position (m)', 'Fontsize', 16)</span>
+<span class="comment">% ylabel('Vertical Position (m)', 'Fontsize', 16)</span>
+<span class="comment">% title('Pedaling System', 'Fontsize', 24)</span>
+<span class="comment">% set(gca, 'FontSize', 18)</span>
+
+drawnow <span class="comment">% forces figure to appear, which may not happen in loops</span>
+</pre><pre class="codeinput"><span class="keyword">end</span>
+ close(vidObj)
+</pre><pre class="codeoutput">Warning: No video frames were written to this file. The file may be invalid. 
+</pre><h2 id="7">Outputs</h2><pre class="codeinput"><span class="comment">%Plots of angles,velocity,acceleration</span>
+subplot(3,1,1)
+plot(angArray,th3,<span class="string">'g'</span>, angArray,th4,<span class="string">'b'</span>);
+title(<span class="string">'Plots of \theta_2, \theta_3, and \theta_4 for two rotations of \theta_2'</span>, <span class="string">'Fontsize'</span>, 15);
+xlabel(<span class="string">'\theta_2 (rad)'</span>, <span class="string">'Fontsize'</span>, 10);
+ylabel(<span class="string">'Angles (rad)'</span>, <span class="string">'Fontsize'</span>, 8);
+ylim([0 8])
+legend(<span class="string">'\theta_3'</span>,<span class="string">'\theta_4'</span>,<span class="string">'Location'</span>,<span class="string">'NortheastOutside'</span>);
+set(gca, <span class="string">'FontSize'</span>, 10)
+
+subplot(3,1,2)
+plot(angArray,om3,<span class="string">'g'</span>,angArray,om4,<span class="string">'b'</span>);
+title(<span class="string">'Plots of \omega_2, \omega_3, and \omega_4 for two rotations of \theta_2'</span>, <span class="string">'Fontsize'</span>, 15);
+xlabel(<span class="string">'\theta_2 (rad)'</span>, <span class="string">'Fontsize'</span>, 10);
+ylabel(<span class="string">'Angular Velocities (rad/s)'</span>, <span class="string">'Fontsize'</span>, 8);
+legend(<span class="string">'\omega_3'</span>,<span class="string">'\omega_4'</span>,<span class="string">'Location'</span>,<span class="string">'NortheastOutside'</span>);
+set(gca, <span class="string">'FontSize'</span>, 10)
+
+subplot(3,1,3)
+plot(angArray,al3,<span class="string">'g'</span>,angArray,al4,<span class="string">'b'</span>);
+title(<span class="string">'Plots of \alpha_2, \alpha_3, and \alpha_4 for two rotations of \theta_2'</span>, <span class="string">'Fontsize'</span>, 15);
+xlabel(<span class="string">'\theta_2 (rad)'</span>, <span class="string">'Fontsize'</span>, 10);
+ylabel(<span class="string">'Angular Accelerations (rad/s^2)'</span>, <span class="string">'Fontsize'</span>, 8);
+legend(<span class="string">'\alpha_3'</span>,<span class="string">'\alpha_4'</span>,<span class="string">'Location'</span>,<span class="string">'NortheastOutside'</span>);
+set(gca, <span class="string">'FontSize'</span>, 10)
+
+<span class="comment">%Plot of torque at hip and pedal vs theta2</span>
+figure
+plot(angArray,THip,<span class="string">'b'</span>, angArray,Tpedal,<span class="string">'g'</span>)
+title(<span class="string">'Torques at hip and pedal vs \theta_2'</span>, <span class="string">'Fontsize'</span>, 20)
+xlabel(<span class="string">'\theta_2 (rad)'</span>, <span class="string">'Fontsize'</span>, 13)
+ylabel(<span class="string">'Torque (N*m)'</span>, <span class="string">'Fontsize'</span>, 13)
+legend(<span class="string">'Torque at Hip'</span>,<span class="string">'Torque at Pedal'</span>,<span class="string">'Location'</span>,<span class="string">'EastOutside'</span>);
+set(gca, <span class="string">'FontSize'</span>, 18)
+
+<span class="comment">%Plot of forces vs Theta2 Angle</span>
+figure
+plot(angArray,Fpar,<span class="string">'-'</span>,angArray,Fperp,<span class="string">'-'</span>);
+title(<span class="string">'Plot of Parallel and Perpendicular Forces at Knee vs Theta 2'</span>, <span class="string">'Fontsize'</span>, 5);
+xlabel(<span class="string">'\theta_2 (rad)'</span>, <span class="string">'Fontsize'</span>, 13);
+ylabel(<span class="string">'Forces at Knee (N)'</span>, <span class="string">'Fontsize'</span>, 13);
+legend(<span class="string">'Shear Force'</span>,<span class="string">'Normal Force'</span>,<span class="string">'Location'</span>,<span class="string">'EastOutside'</span>)
+set(gca, <span class="string">'FontSize'</span>, 18)
+</pre><img vspace="5" hspace="5" src="bicycleProject_01.png" alt=""> <img vspace="5" hspace="5" src="bicycleProject_02.png" alt=""> <img vspace="5" hspace="5" src="bicycleProject_03.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2020b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Bicycle Motion Analysis
+% Robert Kobrin, Audrey Biller, Macie Benge, Robert Samaskeawicz
+% rlkobrin@ncsu.edu
+% 2/23/2022
+% BikeProjectTest.m
+
+clear
+clc
+close all
+%% Declarations
+% Define four bar lengths (meters)
+r1 = .76; % Frame length (m)
+r2 = 0.1; % Pedal length (m)
+r3 = 0.4572; % Lower leg length of Robert S (m)
+r4 = 0.4826; % Thigh length of Robert S (m)
+
+% Define input bar's initial angle, omega, and alpha
+th1init = (73)*(pi/180); %Initial theta 1 angle (degrees)
+th2init = pi; %Initial theta 2 angle (radians)
+thfinal = 3*pi; %Final theta 2 angle (radians)
+om2init = 1; %Initial omega (rad/s)
+al2 = 0; %Initial alpha (rad/s^2)
+
+% Variables
+mass = 100; %Mass of human (kg)
+g = -9.8; %gravity m/s^2
+Tdown = 125; %Torque when pushing down (N*m)
+Tup = 0; %Torque when pushing up (N*m)
+
+% Mass of components
+m1 = 1.25; %Frame, value found online
+m2 = 0.3; %Pedal, value found online
+m3 = mass*0.0465; %Lower Leg
+m4 = mass*0.1; %Thigh
+
+% Force of gravity
+Fg2y = g*m2;
+Fg3y = g*m3;
+Fg4y = g*m4;
+
+% Moments of inertia
+I1 = 1/12 * m1 * r1^2; %MoI for link 1 (Frame)
+I2 = 1/12 * m2 * r2^2; %MoI for link 2 (Pedal)
+I3 = m3*(r3*0.302)^2; %MoI for link 3(Lower Leg)
+I4 = m4*(r4*0.323)^2; %MoI for link 4 (Thigh)
+
+% Guess for fsolve
+guess = [pi (3*pi)/2 0 0 0 0];
+
+% Angle Array
+angArray = th2init:(pi/180):thfinal;
+om2 = [];
+
+% Plot
+vidObj.FrameRate = 10; 
+
+% Anthropometric Table Values
+legDist = 0.567; 
+legProx = 0.433;
+thighDist = 0.567;
+thighProx = 0.433;
+%% Calculations
+options = optimoptions('fsolve','Display','off','MaxIter',10000,...
+    'MaxFunEvals',50000,'TolFun',1e-10);
+
+vidObj = VideoWriter('Cycling.avi');
+open(vidObj)
+
+for k = 1:length(angArray)
+    th2 = angArray(k);
+ 
+    om2(k) = sqrt(om2init^2 + 2*al2*(th2-th2init));
+    answers = fsolve(@fourbar_proj,guess,options,r1,r2,r3,r4,th1init,th2,om2(k),al2);
+    guess = answers;
+    th3(k) = answers(1);
+    th4(k) = answers(2);
+    om3(k) = answers(3);
+    om4(k) = answers(4);
+    al3(k) = answers(5);
+    al4(k) = answers(6);  
+    
+        %r vectors
+    r12x(k) = (-r2/2)*cos(th2);
+    r12y(k) = (-r2/2)*sin(th2);
+    r32x(k) = (r2/2)*cos(th2);
+    r32y(k) = (r2/2)*sin(th2);
+    r23x = (-r3*legDist)*cos(th3);
+    r23y = (-r3*legDist)*sin(th3);
+    r43x = (r3*legProx)*cos(th3);
+    r43y = (r3*legProx)*sin(th3);
+    r34x = (-r4*thighDist)*cos(th4);
+    r34y = (-r4*thighDist)*sin(th4);
+    r14x = (r4*thighProx)*cos(th4);
+    r14y = (r4*thighProx)*sin(th4);
+    
+    % Solving for linear accelerations
+    acm2x = -al2.*(r2/2).*sin(th2) - om2.^2 .* (r2/2).*cos(th2);
+    acm2y = al2.*(r2/2).*cos(th2) - om2.^2 .* (r2/2).*sin(th2);
+    acm3x = -al2.*r2.*sin(th2) - om2.^2 .*r2.*cos(th2) -al3.*(r3*legDist).*sin(th3) - om3.^2 .* (r3*legDist).*cos(th3);
+    acm3y = al2.*r2.*cos(th2) - om2.^2 .* r2.*sin(th2) + al3.*(r3*legDist).*cos(th3) - om3.^2 .*(r3*legDist).*sin(th3);
+    acm4x = -al2.*r2.*sin(th2) - om2.^2 *r2.*cos(th2) -al3.*r3.*sin(th3) - om3.^2 .*r3.*cos(th3) - al4.*(r4*thighDist).*sin(th4) - om4.^2 .* (r4*thighDist).*cos(th4);
+    acm4y = al2.*r2.*cos(th2) - om2.^2 .* r2.*sin(th2) + al3.*r3.*cos(th3) - om3.^2 .* r3.*sin(th3) + al4.*(r4*thighDist).*cos(th4) - om4.^2 .* (r4*thighDist).*sin(th4);
+    
+    if (th2 >=(3*pi)/2) && (th2 <= (5*pi)/2)
+        Tdown = 0;
+    else
+        Tdown = 125;
+    end
+    
+    Tpedal(k) = Tdown;
+    
+    % F12x  F12y    F32x       F32y    F23x    F23y    F43x     F43y    F34x    F34y    F14x     F14y    T4
+A = [1       0       1          0       0       0       0        0       0       0       0        0      0;
+     0       1       0          1       0       0       0        0       0       0       0        0      0;
+   -r12y(k) r32x(k)  -r32y(k) r12x(k)   0       0       0        0       0       0       0        0      1;
+     0       0       0          0       1       0       1        0       0       0       0        0      0;
+     0       0       0          0       0       1       0        1       0       0       0        0      0;
+     0       0       0          0    -r23y(k)  r23x(k) -r43y(k) r43x(k)  0       0       0        0      0;
+     0       0       0          0       0       0       0        0       1       0       1        0      0;
+     0       0       0          0       0       0       0        0       0       1       0        1      0;
+     0       0       0          0       0       0       0        0     -r34y(k) r34x(k) -r14y(k) r14x(k) 0;
+     0       0       1          0       1       0       0        0       0       0       0        0      0;
+     0       0       0          1       0       1       0        0       0       0       0        0      0;
+     0       0       0          0       0       0       1        0       1       0       0        0      0;
+     0       0       0          0       0       0       0        1       0       1       0        0      0];  
+b = [(m2*acm2x(k)) (m2*acm2y(k) - m2*g) (I2*al2) (m3*acm3x(k)) (m3*acm3y(k) -m3*g) (I3*al3(k)) (m4*acm4x(k)) (m4*acm4y(k)-m4*g) (I4*al4(k)-Tdown) 0 0 0 0]';
+
+F = A\b;
+
+YForce(k) = F(10);
+XForce(k) = F(9);
+%Fpar = XForce(k).*cos(th4) + YForce(k).*sin(th4); %force parallel to thigh
+%Fperp = YForce(k).*cos(th4) - XForce(k).*sin(th4); %force perpendicular to thigh
+Fpar = YForce.*sin(90-th4);
+Fperp = XForce.*cos(th4);
+THip(k) = F(13);
+
+% Joint locations
+j1x(k) = r1*cos(th1init); %X position of joint 1 coordinate
+j1y(k) = r1*sin(th1init); %Y position of joint 1 coordinate
+j2x(k) = 0; %X position of joint 2 coordinate
+j2y(k) = 0; %Y position of joint 2 coordinate
+j3x(k) = r32x(k)-r12x(k);
+j3y(k) = r32y(k) - r12y(k);
+j4x(k) = j3x(k) + r3*cos(th3(k));
+j4y(k) = j3y(k) + r3*sin(th3(k));
+
+lengthR2(k) = sqrt((j2x(k)-j3x(k))^2 + (j2y(k)-j3y(k))^2);
+lengthR3(k) = sqrt((j4x(k)-j3x(k))^2 + (j4y(k)-j3y(k))^2);
+lengthR4(k) = sqrt((j4x(k)-j1x(k))^2 + (j4y(k)-j1y(k))^2);
+
+
+%% Animated Rotation Plot
+%figure(1)
+%currentFrame=getframe(gcf);
+%writeVideo(vidObj,currentFrame);
+% plot([j1x(k) j2x(k)], [j1y(k) j2y(k)], 'r',...
+%     [j2x(k) j3x(k)], [j2y(k) j3y(k)], 'b',...
+%     [j3x(k) j4x(k)], [j3y(k) j4y(k)], 'g',...
+%     [j4x(k) j1x(k)], [j4y(k) j1y(k)], 'k',...
+%      j4x, j4y, 'm-' ,...
+%     j1x(k), j1y(k), 'ro', j2x(k), j2y(k), 'bo', ...
+%     j3x(k), j3y(k), 'go', j4x(k), j4y(k), 'ko', 'LineWidth', 2)
+% legend('Frame', 'Pedal', 'Leg', 'Thigh','Knee','Location','southeast')
+% xlim([-.5 .5])
+% ylim([-.2 .8])
+% xlabel('Horizontal Position (m)', 'Fontsize', 16)
+% ylabel('Vertical Position (m)', 'Fontsize', 16)
+% title('Pedaling System', 'Fontsize', 24)
+% set(gca, 'FontSize', 18)
+
+drawnow % forces figure to appear, which may not happen in loops    
+end
+ close(vidObj)
+%% Outputs
+
+%Plots of angles,velocity,acceleration
+subplot(3,1,1)
+plot(angArray,th3,'g', angArray,th4,'b');
+title('Plots of \theta_2, \theta_3, and \theta_4 for two rotations of \theta_2', 'Fontsize', 15);
+xlabel('\theta_2 (rad)', 'Fontsize', 10);
+ylabel('Angles (rad)', 'Fontsize', 8);
+ylim([0 8])
+legend('\theta_3','\theta_4','Location','NortheastOutside');
+set(gca, 'FontSize', 10)
+
+subplot(3,1,2)
+plot(angArray,om3,'g',angArray,om4,'b');
+title('Plots of \omega_2, \omega_3, and \omega_4 for two rotations of \theta_2', 'Fontsize', 15);
+xlabel('\theta_2 (rad)', 'Fontsize', 10);
+ylabel('Angular Velocities (rad/s)', 'Fontsize', 8);
+legend('\omega_3','\omega_4','Location','NortheastOutside');
+set(gca, 'FontSize', 10)
+
+subplot(3,1,3)
+plot(angArray,al3,'g',angArray,al4,'b');
+title('Plots of \alpha_2, \alpha_3, and \alpha_4 for two rotations of \theta_2', 'Fontsize', 15);
+xlabel('\theta_2 (rad)', 'Fontsize', 10);
+ylabel('Angular Accelerations (rad/s^2)', 'Fontsize', 8);
+legend('\alpha_3','\alpha_4','Location','NortheastOutside');
+set(gca, 'FontSize', 10)
+
+%Plot of torque at hip and pedal vs theta2
+figure
+plot(angArray,THip,'b', angArray,Tpedal,'g')
+title('Torques at hip and pedal vs \theta_2', 'Fontsize', 20)
+xlabel('\theta_2 (rad)', 'Fontsize', 13)
+ylabel('Torque (N*m)', 'Fontsize', 13)
+legend('Torque at Hip','Torque at Pedal','Location','EastOutside');
+set(gca, 'FontSize', 18)
+
+%Plot of forces vs Theta2 Angle
+figure
+plot(angArray,Fpar,'-',angArray,Fperp,'-');
+title('Plot of Parallel and Perpendicular Forces at Knee vs Theta 2', 'Fontsize', 5);
+xlabel('\theta_2 (rad)', 'Fontsize', 13);
+ylabel('Forces at Knee (N)', 'Fontsize', 13);
+legend('Shear Force','Normal Force','Location','EastOutside')
+set(gca, 'FontSize', 18)
+
+##### SOURCE END #####
+--></body></html>
